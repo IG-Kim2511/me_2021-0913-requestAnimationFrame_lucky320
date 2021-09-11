@@ -11,89 +11,84 @@
             text-align: center;
         }
 
-    .btn {
-        font-size: 2rem;
-      }
-    .box {
-        width: 10vw;
-        height: 10vh;        
+        .btn,.btn_b {
+            font-size: 2rem;
+            margin: 1rem;
+        }
+        .box {
+            width: 10vw;
+            height: 10vh;        
 
-        display:block;
-        margin: auto;
-        padding: 2rem;
-    }
-    
-    .fixed{
-        position: fixed;
-        top: 0;
-        left: 100px;
-    }
-
-    .number{
-        font-size: 2rem;
-        margin-left: 2rem;
-    }
-    .poke{
+            display:block;
+            margin: auto;
+            padding: 2rem;
+        }
         
-    }
+        .number{
+            font-size: 2rem;
+            margin-left: 2rem;
+        }
+    
     </style>
 </head>
 <body>
     <section class="fixed">
-        <h2>stoping poke coin wave</h2>
+        <h2>Grap a number 777 and start today with lucky</h2>
         <h3></h3>
-        <button class="btn">Cancel requestAnimationFrame</button>
+        <button class="btn">Stop (Cancel requestAnimationFrame)</button>
         <span class="number">0</span>
+        <div>
+            <button class="btn_b">start again</button>
+        </div>
     </section>
     <div class="box"></div>
 
     <script>
         let timeId;
-        let n = 0;    /* 🍉js 50 */
+        let n = 700;    /* 🍉js 50 */
 
         const btn = document.querySelector(".btn");
+        const btnB = document.querySelector(".btn_b");
         const box = document.querySelector(".box");
         const number = document.querySelector(".number");
-
-
  
-        function sample() {
-            n++;   
-            
-            (()=> {
-            let div = document.createElement('div');
-            div.className = "poke";
-            div.innerHTML = `
-                <img src="./img/Pokecoin.png" alt="">            
-            `;          
-            box.append(div);
-        })();
-
+        function lucky() {
+            n++;      /* 🍉js 50 */
             number.innerHTML=`${n}`;
-            if (n > 200) {
+            
+            if (n > 800) {
+                lucky_b();
                 return;
             }
 
-            /* 🦄 requestAnimationFrame*/
-            timeId = requestAnimationFrame(sample);
+            /* 🦄js 10 requestAnimationFrame*/
+            timeId = requestAnimationFrame(lucky);
         }
 
-        sample(); 
+        lucky(); 
+
+        function lucky_b() {
+            n--;
+            number.innerHTML=`${n}`;
+
+            if (n < 700) {
+                lucky();
+                return;
+            }
+
+            timeId = requestAnimationFrame(lucky_b);
+            
+        }
 
         btn.addEventListener("click", function () {
-            cancelAnimationFrame(timeId); /* 🦄 */
+            cancelAnimationFrame(timeId); /* 🦄js 10 */
       });
 
+      /* 🍀start again */
+      btnB.addEventListener("click",()=>{
+        location.reload();
+      });
 
-/* 
-        let div = document.createElement('div');
-            div.className = "poke";
-            div.innerHTML = `
-                <img src="./img/Pokecoin.png" alt="">            
-            `;          
-            box.append(div);
-            
-             */
     </script>
 
 </body>
