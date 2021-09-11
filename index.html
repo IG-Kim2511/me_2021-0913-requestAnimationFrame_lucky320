@@ -52,7 +52,11 @@
         const box = document.querySelector(".box");
         const number = document.querySelector(".number");
  
+        //  🍀
         function lucky() {
+            /* 🦄js 10 requestAnimationFrame(함수이름)*/
+            timeId = requestAnimationFrame(lucky);
+
             n++;      /* 🍉js 50 */
             number.innerHTML=`${n}`;
             
@@ -60,14 +64,14 @@
                 lucky_b();
                 return;
             }
-
-            /* 🦄js 10 requestAnimationFrame*/
-            timeId = requestAnimationFrame(lucky);
         }
 
         lucky(); 
 
+        //  🍀
         function lucky_b() {
+            timeId = requestAnimationFrame(lucky_b);
+
             n--;
             number.innerHTML=`${n}`;
 
@@ -75,13 +79,13 @@
                 lucky();
                 return;
             }
-
-            timeId = requestAnimationFrame(lucky_b);
-            
         }
 
+    //  🍀
         btn.addEventListener("click", function () {
-            cancelAnimationFrame(timeId); /* 🦄js 10 */
+
+            // 🦄10 requestAnimationFrame(request....변수이름)
+            cancelAnimationFrame(timeId);
       });
 
       /* 🍀start again */
